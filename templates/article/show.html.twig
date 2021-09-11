@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detail Article
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+	<br>
+	{% block flash_message %}
+		{% for message in app.flashes('notice') %}
+			<div class="alert alert-dismissible alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
+	{% endblock %}
+
+
+	<article>
+		<h2>{{article.titre}}</h2>
+		<div class="metadata">
+			Ecrit par
+			<b>{{article.auteur}}</b>
+
+		</div><br>
+		<div class="content">
+			<br/>
+			{{article.description|raw}}
+		</article><br/><br/>
+</div>
+
+	{% endblock %}

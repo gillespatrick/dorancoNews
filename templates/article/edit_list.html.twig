@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des articles a modifie
+{% endblock %}
+
+{% block body %}
+	<br><br>
+    <h1 class = "text-center"> Liste des articles a modifie</h1>
+    <br><br>
+	<section class="articles container">
+		{% for article in articles %}
+			<article>
+            {% block flash_message %}
+		{% for message in app.flashes('notice') %}
+			<div class="alert alert-dismissible alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
+	{% endblock %}
+
+
+				<h2>
+					{{article.titre}}</h2>
+				<div class="metadata">
+					Ecrit par
+					<b>{{article.auteur}}</b>
+					<br>
+					<div class="content">
+
+						<p class="text-justify">{{article.description|raw}}</p>
+					</div>
+					<div class="content">
+						<a href="{{path('article_edit',{'id':article.id})}}" class="btn btn-warning">
+							Modifier cet article
+						</a>
+
+					</div>
+
+
+				</article/><br>
+
+			{% endfor %}
+		</section>
+
+	{% endblock %}

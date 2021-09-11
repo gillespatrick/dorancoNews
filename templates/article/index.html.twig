@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste Articles
+{% endblock %}
+
+{% block body %}
+	<br>
+	<section class="articles container">
+		{% for article in articles %}
+			<article>
+				<h2>
+					{{article.titre}}</h2>
+				<div class="metadata">
+					Ecrit par
+					<b>{{article.auteur}}</b>
+					<br>
+					<div class="content">
+
+						<p class="text-justify">{{article.description|raw}}</p>
+					</div>
+					<div class="content">
+						<a href="{{path('article_show',{'id':article.id})}}" class="btn btn-primary">
+							Lire la suite
+						</a>
+
+					</div>
+
+
+				</article/><br>
+
+			{% endfor %}
+		</section>
+
+	{% endblock %}
